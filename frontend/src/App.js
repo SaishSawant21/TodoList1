@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Lists from './components/Lists'
 import axios from "axios";
+import Footer from "./components/Footer";
 import { baseURL } from './utils/content';
 import Header from "./components/Header";
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
         ))}
     </div>
     </main>
+    <Footer/>
     </>
   )
 }

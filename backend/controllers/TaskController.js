@@ -10,7 +10,7 @@ module.exports.saveTask = (req, res) => {
 
   TaskModel.create({ task })
     .then((data) => {
-      console.log("Saved Successfully...");
+    console.log("Saved Successfully...");
       res.status(201).send(data);
     })
     .catch((err) => {
