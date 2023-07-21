@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "mern"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: mern.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: mern-web
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  - host: api-mern.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: mern-api
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  # tls:
+  # - hosts:
+  #   - preprod.evolytes.io
+  #   - api-preprod.evolytes.io
+  #   secretName: evolyte-io-tls-2022

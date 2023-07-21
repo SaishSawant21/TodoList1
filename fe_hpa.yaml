@@ -1,0 +1,31 @@
+# Source: mern/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mern-web
+  labels:
+    app.kubernetes.io/name: mern
+    app.kubernetes.io/instance: mern-web
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mern-web
+  minReplicas: 2
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70

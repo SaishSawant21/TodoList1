@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+      fe: 
+            command: npm start
+            ports:
+                  - 3000:3000
+            build: ./frontend
+
+      be:
+            command: npm run dev
+            ports:
+                  - 5000:5000
+            build: ./backend
+            
+      db: 
+            image: mongo
+            ports:
+                  - 27017:27017
+            volumes:
+                  - saishdata:/var/lib
+
+volumes:
+      saishdata:
