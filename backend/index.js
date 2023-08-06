@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
 mongoose
-  .connect('mongodb://db:27017/EmployeeData')
+  .connect('mongodb://mongo-service:27017/EmployeeData')
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
